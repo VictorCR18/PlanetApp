@@ -1,16 +1,24 @@
+package com.example.planetapp.navigation
+
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.planetapp.ui.screens.DetailsScreen
-import com.example.planetapp.ui.screens.HomeScreen
-import com.example.planetapp.ui.screens.FavoritesScreen
 import com.example.planetapp.models.planetList
+import com.example.planetapp.ui.components.BottomNavigationBar
+import com.example.planetapp.ui.screens.DetailsScreen
+import com.example.planetapp.ui.screens.FavoritesScreen
+import com.example.planetapp.ui.screens.HomeScreen
+import androidx.navigation.compose.composable
 
+
+// Classe representando os itens da Bottom Bar
 sealed class BottomBarScreen(val route: String, val icon: @Composable () -> Unit, val label: String) {
     object Home : BottomBarScreen(
         route = "home",
@@ -24,7 +32,6 @@ sealed class BottomBarScreen(val route: String, val icon: @Composable () -> Unit
         label = "Favoritos"
     )
 }
-
 @ExperimentalMaterial3Api
 @Composable
 fun NavGraph(
@@ -53,7 +60,6 @@ fun NavGraph(
                     onHelpClick = onHelpClick
                 )
             }
-
 // Tela de Favoritos
             composable(BottomBarScreen.Favorites.route) {
                 FavoritesScreen(
@@ -75,4 +81,3 @@ fun NavGraph(
         }
     }
 }
-
